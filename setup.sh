@@ -1,8 +1,6 @@
 #!/bin/bash
 
-repo_path="./zshrc-broccoli"
-
-cp "$repo_path/.zshrc" "$HOME/.zshrc"
+cp ".zshrc" "$HOME/.zshrc"
 
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

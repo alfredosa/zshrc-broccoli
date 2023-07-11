@@ -5,7 +5,6 @@ export HOMEBREW_NO_ANALYTICS=1
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
-source /usr/local/bin/virtualenvwrapper.sh
 ZSH_DISABLE_COMPFIX=true
 source "${ZSH}/oh-my-zsh.sh"
 unalias rm
@@ -41,7 +40,6 @@ export LC_ALL=en_US.UTF-8
 export BUNDLER_EDITOR=code
 export EDITOR=code
 export PYTHONBREAKPOINT=ipdb.set_trace
-export PATH=/opt/homebrew/bin:./bin:./node_modules/.bin:/Users/alfredosuarez/.pyenv/plugins/pyenv-virtualenv/shims:/Users/alfredosuarez/.pyenv/shims:/Users/alfredosuarez/.rbenv/bin:/Users/alfredosuarez/.pyenv/plugins/pyenv-virtualenv/shims:/Library/Frameworks/Python.framework/Versions/3.11/bin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/alfredosuarez/.pyenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/alfredosuarez/.cargo/bin:/usr/local/sbin
 export PATH="$PATH:/Users/alfredosuarez/.local/bin"
 export PATH="$PATH:/Users/alfredosuarez/Library/Python/3.10/bin"
 alias python="python3"
@@ -94,3 +92,7 @@ jobs:
         poetry init -n
     fi
 }
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
