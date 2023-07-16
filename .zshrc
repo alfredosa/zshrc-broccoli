@@ -5,6 +5,11 @@ export HOMEBREW_NO_ANALYTICS=1
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+
 ZSH_DISABLE_COMPFIX=true
 source "${ZSH}/oh-my-zsh.sh"
 unalias rm
@@ -93,6 +98,25 @@ jobs:
     fi
 }
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
+# Extract many files with one command
+function extract () {
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xvjf $1    ;;
+      *.tar.gz)    tar xvzf $1    ;;
+      *.tar.xz)    tar Jxvf $1    ;;
+      *.bz2)       bunzip2 $1     ;;
+      *.rar)       rar x $1       ;;
+      *.gz)        gunzip $1      ;;
+      *.tar)       tar xvf $1     ;;
+      *.tbz2)      tar xvjf $1    ;;
+      *.tgz)       tar xvzf $1    ;;
+      *.zip)       unzip -d `echo $1 | sed 's/\(.*\)\.zip/\1/'` $1;;
+      *.Z)         uncompress $1  ;;
+      *.7z)        7z x $1        ;;
+      *)           echo "don't know how to extract '$1'" ;;
+    esac
+  else
+    echo "'$1' is not a valid file!"
+  fi
+}
