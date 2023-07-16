@@ -98,7 +98,16 @@ jobs:
     fi
 }
 
-# Extract many files with one command
+function up () {
+  LIMIT=$1
+  P=$PWD/..
+  for ((i=1; i < LIMIT; i++))
+  do
+    P=$P/..
+  done
+  cd $P
+}
+
 function extract () {
   if [ -f $1 ] ; then
     case $1 in
